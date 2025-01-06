@@ -127,3 +127,68 @@ VALUES
 ('CMD049', '2025-01-06', 130.00, 49),
 ('CMD050', '2025-01-06', 160.00, 50);
                     
+
+
+CREATE TABLE adresses_livraison (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    adresse VARCHAR(255),
+    ville VARCHAR(255),
+    code_postal VARCHAR(20),
+    pays VARCHAR(255),
+    id_utilisateur INTEGER,
+    FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id)
+);
+
+INSERT INTO adresses_livraison (adresse, ville, code_postal, pays, id_utilisateur)
+VALUES
+('10 Rue de Paris', 'Paris', '75001', 'France', 1),
+('22 Avenue des Champs-Élysées', 'Paris', '75008', 'France', 2),
+('5 Boulevard Saint-Germain', 'Paris', '75005', 'France', 3),
+('30 Rue de la République', 'Lyon', '69001', 'France', 4),
+('12 Rue des Martyrs', 'Paris', '75009', 'France', 5),
+('8 Place de la Concorde', 'Paris', '75008', 'France', 6),
+('14 Rue de la Gare', 'Marseille', '13001', 'France', 7),
+('33 Boulevard de la Liberté', 'Marseille', '13003', 'France', 8),
+('16 Rue de Bretagne', 'Lille', '59000', 'France', 9),
+('47 Avenue de la Mer', 'Nice', '06000', 'France', 10),
+('99 Rue de la Paix', 'Paris', '75002', 'France', 11),
+('54 Rue des Ternes', 'Paris', '75017', 'France', 12),
+('15 Rue des Lilas', 'Toulouse', '31000', 'France', 13),
+('10 Rue du Mont-Cenis', 'Lyon', '69004', 'France', 14),
+('23 Rue du Faubourg Saint-Antoine', 'Paris', '75011', 'France', 15),
+('21 Rue de la Plaine', 'Marseille', '13010', 'France', 16),
+('18 Rue du Chardonnet', 'Paris', '75005', 'France', 17),
+('5 Rue de la Victoire', 'Paris', '75009', 'France', 18),
+('12 Boulevard de Strasbourg', 'Paris', '75010', 'France', 19),
+('3 Rue de la Forêt', 'Bordeaux', '33000', 'France', 20),
+('77 Avenue de Paris', 'Nantes', '44000', 'France', 21),
+('10 Rue de l’Indépendance', 'Lyon', '69002', 'France', 22),
+('2 Rue des Acacias', 'Marseille', '13006', 'France', 23),
+('58 Boulevard Saint-Michel', 'Paris', '75005', 'France', 24),
+('29 Rue de la Fontaine', 'Lille', '59000', 'France', 25),
+('20 Rue des Écoles', 'Lyon', '69007', 'France', 26),
+('77 Rue des Rosiers', 'Paris', '75003', 'France', 27),
+('4 Rue de la Charité', 'Strasbourg', '67000', 'France', 28),
+('3 Rue des Aubépines', 'Marseille', '13015', 'France', 29),
+('14 Boulevard Victor Hugo', 'Paris', '75016', 'France', 30),
+('25 Rue de l’Ouest', 'Paris', '75014', 'France', 31),
+('8 Rue de la Lune', 'Lyon', '69001', 'France', 32),
+('40 Rue des Érables', 'Toulouse', '31000', 'France', 33),
+('62 Rue de la Gare', 'Nice', '06000', 'France', 34),
+('36 Boulevard des Filles du Calvaire', 'Paris', '75003', 'France', 35),
+('19 Rue de Saintonge', 'Paris', '75003', 'France', 36),
+('21 Avenue de la République', 'Marseille', '13002', 'France', 37),
+('32 Rue de la Seine', 'Paris', '75006', 'France', 38),
+('4 Rue de la Butte', 'Paris', '75018', 'France', 39),
+('51 Rue de la Boétie', 'Paris', '75008', 'France', 40),
+('28 Rue du Faubourg du Temple', 'Paris', '75010', 'France', 41),
+('11 Avenue des Lilas', 'Lyon', '69003', 'France', 42),
+('53 Boulevard de Magenta', 'Paris', '75010', 'France', 43),
+('26 Rue du Faubourg Saint-Denis', 'Paris', '75010', 'France', 44),
+('17 Rue du Val de Grâce', 'Paris', '75005', 'France', 45),
+('39 Rue de Charonne', 'Paris', '75011', 'France', 46),
+('56 Rue des Saints-Pères', 'Paris', '75007', 'France', 47),
+('18 Rue des Boulets', 'Paris', '75011', 'France', 48),
+('5 Boulevard de l’Indépendance', 'Marseille', '13003', 'France', 49),
+('10 Rue de la Chapelle', 'Paris', '75018', 'France', 50);
+                    
