@@ -192,3 +192,36 @@ VALUES
 ('5 Boulevard de l’Indépendance', 'Marseille', '13003', 'France', 49),
 ('10 Rue de la Chapelle', 'Paris', '75018', 'France', 50);
                     
+
+
+
+SELECT
+  commandes.ref,
+  utilisateurs.nom
+FROM
+  commandes
+  INNER JOIN utilisateurs ON commandes.id_utilisateur = utilisateurs.id;
+
+SELECT
+  c.ref,
+  u.nom,
+  a.adresse,
+  a.ville,
+  a.code_postal
+FROM
+  utilisateurs u
+  INNER JOIN commandes c ON u.id = c.id_utilisateur
+  INNER JOIN adresses_livraison a ON u.id = a.id_utilisateur
+ORDER BY
+  a.ville ASC;
+
+
+  
+DELETE FROM commandes WHERE id >= 46 AND id <=50;
+
+DELETE FROM commandes WHERE id BETWEEN 46 AND 50;
+
+DELETE FROM commandes WHERE id IN (46, 47, 48, 49, 50);
+
+
+SELECT commandes.ref, utilisateurs.nom FROM utilisateurs RIGHT JOIN commandes ON commandes.id_utilisateur = utilisateurs.id;
