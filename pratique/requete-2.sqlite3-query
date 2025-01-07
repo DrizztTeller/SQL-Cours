@@ -1,0 +1,20 @@
+-- database: ./database.db
+SELECT
+  commandes.ref,
+  utilisateurs.nom
+FROM
+  commandes
+  INNER JOIN utilisateurs ON commandes.id_utilisateur = utilisateurs.id;
+
+SELECT
+  c.ref,
+  u.nom,
+  a.adresse,
+  a.ville,
+  a.code_postal
+FROM
+  utilisateurs u
+  INNER JOIN commandes c ON u.id = c.id_utilisateur
+  INNER JOIN adresses_livraison a ON u.id = a.id_utilisateur
+ORDER BY
+  a.ville ASC;
