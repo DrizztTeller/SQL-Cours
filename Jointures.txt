@@ -1,0 +1,88 @@
+En SQL, les JOIN sont utilisés pour combiner des données de plusieurs tables basées sur une condition commune (généralement une clé primaire ou une clé étrangère). Parmi les types de JOIN, on trouve les LEFT JOIN et RIGHT JOIN, qui permettent de contrôler quelles données sont incluses dans le résultat même s'il n'y a pas de correspondance.
+
+1. LEFT JOIN (ou LEFT OUTER JOIN)
+Un LEFT JOIN inclut toutes les lignes de la table de gauche (la première table mentionnée dans la requête), même s'il n'y a pas de correspondance dans la table de droite.
+
+Si une correspondance est trouvée dans la table de droite, les colonnes correspondantes seront remplies.
+Si aucune correspondance n’est trouvée, les colonnes de la table de droite contiendront des valeurs NULL.
+Exemple :
+
+sql
+Copier le code
+SELECT *
+FROM clients
+LEFT JOIN commandes
+ON clients.id_client = commandes.id_client;
+Cette requête retourne tous les clients même si certains n'ont pas passé de commande.
+Pour les clients sans commande, les colonnes provenant de la table commandes contiendront des valeurs NULL.
+2. RIGHT JOIN (ou RIGHT OUTER JOIN)
+Un RIGHT JOIN est l'opposé du LEFT JOIN. Il inclut toutes les lignes de la table de droite (la deuxième table mentionnée dans la requête), même s'il n'y a pas de correspondance dans la table de gauche.
+
+Si une correspondance est trouvée dans la table de gauche, les colonnes correspondantes seront remplies.
+Si aucune correspondance n’est trouvée, les colonnes de la table de gauche contiendront des valeurs NULL.
+Exemple :
+
+sql
+Copier le code
+SELECT *
+FROM clients
+RIGHT JOIN commandes
+ON clients.id_client = commandes.id_client;
+Cette requête retourne toutes les commandes, même si certaines commandes n'ont pas de client correspondant dans la table clients.
+Pour les commandes sans client, les colonnes provenant de la table clients contiendront des valeurs NULL.
+Différence entre LEFT JOIN et RIGHT JOIN
+La différence se résume à la table qui sera toujours incluse dans le résultat :
+
+LEFT JOIN : Priorité à la table de gauche (première table).
+RIGHT JOIN : Priorité à la table de droite (deuxième table).
+En pratique, on utilise beaucoup plus fréquemment les LEFT JOIN. Si tu comprends bien le LEFT JOIN, tu peux obtenir les mêmes résultats qu’un RIGHT JOIN en inversant simplement l’ordre des tables.
+
+Illustration avec un exemple concret
+Supposons qu'on ait deux tables :
+
+Table clients
+
+id_client	nom
+1	Alice
+2	Bob
+3	Charlie
+Table commandes
+
+id_commande	id_client	montant
+101	1	50
+102	1	30
+103	4	70
+Requête avec LEFT JOIN :
+sql
+Copier le code
+SELECT clients.id_client, clients.nom, commandes.montant
+FROM clients
+LEFT JOIN commandes
+ON clients.id_client = commandes.id_client;
+Résultat :
+
+id_client	nom	montant
+1	Alice	50
+1	Alice	30
+2	Bob	NULL
+3	Charlie	NULL
+Ici, tous les clients sont inclus, même ceux qui n'ont pas de commandes.
+
+Requête avec RIGHT JOIN :
+sql
+Copier le code
+SELECT clients.id_client, clients.nom, commandes.montant
+FROM clients
+RIGHT JOIN commandes
+ON clients.id_client = commandes.id_client;
+Résultat :
+
+id_client	nom	montant
+1	Alice	50
+1	Alice	30
+NULL	NULL	70
+Ici, toutes les commandes sont incluses, même celles qui ne correspondent à aucun client.
+
+Résumé
+LEFT JOIN : Tout de la table de gauche + les correspondances (ou NULL sinon) de la table de droite.
+RIGHT JOIN : Tout de la table de droite + les correspondances (ou NULL sinon) de la table de gauche.
